@@ -1,0 +1,75 @@
+services:
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - /Users/kolisettyvenkataaditya/Desktop/Projects/Kirana2:/var/lib/grafana
+
+  mongodb:
+    image: mongo:latest
+    container_name: kirana_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: userdb
+    volumes:
+      - /Users/kolisettyvenkataaditya/Desktop/Projects/Kirana2/mongo-data:/data/db
+
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+
+  redis:
+    image: redis:latest
+    container_name: kirana_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  postgres:
+    image: postgres:latest
+    container_name: kirana_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: kirana_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/kolisettyvenkataaditya/Desktop/Projects/Kirana2/postgres-data:/var/lib/postgresql/data  # Specify your storage location
+
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka
+    restart: always
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: controller,broker
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_LISTENERS: PLAINTEXT://kafka:9092,CONTROLLER://kafka:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - /Users/kolisettyvenkataaditya/Desktop/Projects/Kirana2/kafka-data:/var/lib/kafka/data
+
+
+volumes:
+  grafana-storage: {}
