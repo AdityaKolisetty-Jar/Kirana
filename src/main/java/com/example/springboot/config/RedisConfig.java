@@ -5,13 +5,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RedisConfig {
 
-    @Bean
+    @Bean("some")
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         return new StringRedisTemplate(redisConnectionFactory);
+    }
+
+    @Bean("cacheTemplate")
+    public RedisTemplate<String, String> redisTemplate(){
+        return new RedisTemplate<>();
     }
 }

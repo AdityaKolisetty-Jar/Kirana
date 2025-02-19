@@ -1,7 +1,7 @@
 package com.example.springboot.feature_orders.controller;
 
 import com.example.springboot.dto.ApiResponse;
-import com.example.springboot.feature_orders.dto.OrderRequest;
+import com.example.springboot.feature_orders.models.OrderRequest;
 import com.example.springboot.feature_orders.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

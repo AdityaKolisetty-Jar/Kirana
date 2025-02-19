@@ -4,7 +4,7 @@ import com.example.springboot.feature_record_transactions.daos.TransactionDao;
 import com.example.springboot.dto.ApiResponse;
 import com.example.springboot.feature_record_transactions.entity.Transaction;
 import com.example.springboot.feature_orders.dao.OrderDao;
-import com.example.springboot.feature_orders.dto.OrderRequest;
+import com.example.springboot.feature_orders.models.OrderRequest;
 import com.example.springboot.feature_orders.entity.Order;
 import com.example.springboot.feature_orders.helper.OrderHelper;
 import com.example.springboot.feature_record_transactions.service.CurrencyConversionService;

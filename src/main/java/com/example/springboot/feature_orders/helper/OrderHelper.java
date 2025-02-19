@@ -1,8 +1,7 @@
 package com.example.springboot.feature_orders.helper;
 
 import com.example.springboot.dto.ApiResponse;
-import com.example.springboot.feature_orders.dto.OrderRequest;
-import com.example.springboot.feature_orders.entity.Order;
+import com.example.springboot.feature_orders.models.OrderRequest;
 import com.example.springboot.feature_products.entity.Products;
 import com.example.springboot.feature_products.repository.ProductsRepository;
 import java.util.List;

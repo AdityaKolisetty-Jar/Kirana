@@ -1,9 +1,11 @@
 package com.example.springboot.feature_orders.dao;
 
-import com.example.springboot.feature_orders.dto.OrderRequest;
+import com.example.springboot.feature_orders.models.OrderRequest;
 import com.example.springboot.feature_orders.entity.Order;
-import com.example.springboot.feature_orders.repository.OrderRepository;
+
 import java.util.UUID;
+
+import com.example.springboot.feature_orders.repository.OrderRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

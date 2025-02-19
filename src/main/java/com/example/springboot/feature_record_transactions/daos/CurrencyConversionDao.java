@@ -2,6 +2,9 @@ package com.example.springboot.feature_record_transactions.daos;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +18,7 @@ public class CurrencyConversionDao {
     private final StringRedisTemplate redisTemplate;
     private final RestTemplate restTemplate;
 
-    public CurrencyConversionDao(StringRedisTemplate redisTemplate, RestTemplate restTemplate) {
+    public CurrencyConversionDao(@Qualifier("some") StringRedisTemplate redisTemplate, RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
         this.restTemplate = restTemplate;
     }
