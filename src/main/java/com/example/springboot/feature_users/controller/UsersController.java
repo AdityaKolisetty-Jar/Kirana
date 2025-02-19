@@ -1,14 +1,16 @@
 package com.example.springboot.feature_users.controller;
 
-import com.example.springboot.feature_users.dao.UsersDao;
+import static com.example.springboot.feature_users.constants.UserLogConstants.*;
+import static com.example.springboot.feature_users.constants.UsersConstants.*;
+
 import com.example.springboot.dto.ApiResponse;
+import com.example.springboot.feature_authorization.util.JwtUtil;
+import com.example.springboot.feature_users.dao.UsersDao;
 import com.example.springboot.feature_users.entity.Users;
 import com.example.springboot.feature_users.service.UsersService;
-import com.example.springboot.feature_authorization.util.JwtUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import static com.example.springboot.feature_users.constants.UserLogConstants.*;
-import static com.example.springboot.feature_users.constants.UsersConstants.*;
 
 @Slf4j
 @RestController

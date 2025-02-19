@@ -26,9 +26,7 @@ public class OrderController {
     @PreAuthorize("hasRole('USER')")
     @PostMapping
     public ResponseEntity<ApiResponse> createOrder(
-            @RequestParam(required = true)
-                    Long userId,
-            @RequestBody OrderRequest orderRequest) {
+            @RequestParam(required = true) Long userId, @RequestBody OrderRequest orderRequest) {
         ApiResponse response = orderService.createOrder(userId, orderRequest);
         return ResponseEntity.ok(response);
     }

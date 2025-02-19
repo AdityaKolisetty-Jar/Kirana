@@ -1,5 +1,8 @@
 package com.example.springboot.filter;
 
+import static com.example.springboot.constants.RateLimiterFilterConstants.*;
+import static com.example.springboot.constants.RateLimiterFilterLogConstants.*;
+
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;
@@ -11,13 +14,9 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import static com.example.springboot.constants.RateLimiterFilterConstants.*;
-import static com.example.springboot.constants.RateLimiterFilterLogConstants.*;
 
 @Component
 @Slf4j

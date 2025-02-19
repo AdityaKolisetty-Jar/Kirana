@@ -1,7 +1,10 @@
 package com.example.springboot.feature_authorization.filter;
 
-import com.example.springboot.service.CustomUserDetailsService;
+import static com.example.springboot.constants.JwtFilterConstants.*;
+import static com.example.springboot.constants.JwtFilterLogConstants.*;
+
 import com.example.springboot.feature_authorization.util.JwtUtil;
+import com.example.springboot.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,9 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import static com.example.springboot.constants.JwtFilterConstants.*;
-import static com.example.springboot.constants.JwtFilterLogConstants.*;
 
 @Component
 @Slf4j
@@ -43,8 +42,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        log.info(
-                JWT_FILTER_REQUEST + request.getMethod() + " " + request.getRequestURI());
+        log.info(JWT_FILTER_REQUEST + request.getMethod() + " " + request.getRequestURI());
 
         String path = request.getServletPath();
         if (path.equals("/users/login")
@@ -60,8 +58,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         if (authorizationHeader == null || !authorizationHeader.startsWith(BEARER)) {
             log.info(NO_JWT_TOKEN_FOUND);
-            response.sendError(
-                    HttpServletResponse.SC_UNAUTHORIZED, UNAUTHORIZATION_JWT_NOT_FOUND);
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, UNAUTHORIZATION_JWT_NOT_FOUND);
             return;
         }
 
@@ -85,8 +82,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 log.info(USER_ROLES + roles);
             } else {
                 log.info(INVALID_JWT_TOKEN);
-                response.sendError(
-                        HttpServletResponse.SC_UNAUTHORIZED, UNAUTHORIZED_JWT_INVALID);
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, UNAUTHORIZED_JWT_INVALID);
                 return;
             }
         }

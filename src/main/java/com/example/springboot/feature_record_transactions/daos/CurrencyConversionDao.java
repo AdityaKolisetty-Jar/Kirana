@@ -1,16 +1,14 @@
 package com.example.springboot.feature_record_transactions.daos;
 
+import static com.example.springboot.feature_record_transactions.constants.CurrencyConversionConstants.*;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import static com.example.springboot.feature_record_transactions.constants.CurrencyConversionConstants.*;
 
 @Repository
 public class CurrencyConversionDao {
@@ -18,7 +16,9 @@ public class CurrencyConversionDao {
     private final StringRedisTemplate redisTemplate;
     private final RestTemplate restTemplate;
 
-    public CurrencyConversionDao(@Qualifier("some") StringRedisTemplate redisTemplate, RestTemplate restTemplate) {
+    public CurrencyConversionDao(
+            @Qualifier("redisCacheTemplate") StringRedisTemplate redisTemplate,
+            RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
         this.restTemplate = restTemplate;
     }

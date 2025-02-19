@@ -1,13 +1,12 @@
 package com.example.springboot.feature_products.service;
 
+import static com.example.springboot.feature_products.constants.ProductsConstants.*;
+
 import com.example.springboot.dto.ApiResponse;
 import com.example.springboot.feature_products.dao.ProductsDao;
 import com.example.springboot.feature_products.entity.Products;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import static com.example.springboot.feature_products.constants.ProductsConstants.*;
 
 @Service
 public class ProductsServiceImpl implements ProductsService {

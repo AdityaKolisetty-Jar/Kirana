@@ -5,7 +5,6 @@ import com.example.springboot.feature_record_transactions.entity.Transaction;
 import com.example.springboot.feature_record_transactions.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("/transactions")
@@ -33,7 +32,7 @@ public class TransactionController {
      *
      * @returnB
      */
-//    @PreAuthorize("hasRole('ADMIN')")
+    //    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<ApiResponse> getAllTransactions() {
         ApiResponse response = transactionService.getAllTransactions();

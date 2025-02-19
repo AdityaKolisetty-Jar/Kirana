@@ -1,15 +1,13 @@
 package com.example.springboot.feature_report_generation.service;
 
+import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
+
 import com.example.springboot.feature_record_transactions.daos.TransactionDao;
 import com.example.springboot.feature_report_generation.dao.ReportDao;
 import com.example.springboot.feature_report_generation.entity.Report;
-
 import java.util.List;
-
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-
-import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
 
 @Service
 public class KafkaProducerServiceImpl implements KafkaProducerService {

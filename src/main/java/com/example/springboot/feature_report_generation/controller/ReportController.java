@@ -1,12 +1,12 @@
 package com.example.springboot.feature_report_generation.controller;
 
+import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
+
 import com.example.springboot.dto.ApiResponse;
 import com.example.springboot.feature_report_generation.service.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
 
 @RestController
 @RequestMapping("/report")

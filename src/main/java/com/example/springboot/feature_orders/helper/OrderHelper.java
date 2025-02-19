@@ -1,16 +1,15 @@
 package com.example.springboot.feature_orders.helper;
 
+import static com.example.springboot.feature_orders.constants.OrderConstants.*;
+
 import com.example.springboot.dto.ApiResponse;
 import com.example.springboot.feature_orders.models.OrderRequest;
 import com.example.springboot.feature_products.entity.Products;
 import com.example.springboot.feature_products.repository.ProductsRepository;
+import com.example.springboot.feature_record_transactions.entity.Transaction;
 import java.util.List;
 import java.util.Optional;
-
-import com.example.springboot.feature_record_transactions.entity.Transaction;
 import org.springframework.stereotype.Component;
-
-import static com.example.springboot.feature_orders.constants.OrderConstants.*;
 
 @Component
 public class OrderHelper {
@@ -43,8 +42,7 @@ public class OrderHelper {
             }
 
             if (targetCurrency == null || targetCurrency.isEmpty()) {
-                return new ApiResponse(
-                        false, INVALID_CURRENCY, CURRENCY_IS_REQUIRED, null, null);
+                return new ApiResponse(false, INVALID_CURRENCY, CURRENCY_IS_REQUIRED, null, null);
             }
 
             Products product = productOpt.get();
@@ -65,14 +63,11 @@ public class OrderHelper {
         }
 
         return new ApiResponse(
-                true,
-                PRODUCTS_PROCESSED,
-                ALL_PRODUCTS_PROCESSED_SUCCESSFULLY,
-                null,
-                totalAmount);
+                true, PRODUCTS_PROCESSED, ALL_PRODUCTS_PROCESSED_SUCCESSFULLY, null, totalAmount);
     }
 
-    public static Transaction createTransaction(OrderRequest orderRequest, Long userId, double totalAmount){
+    public static Transaction createTransaction(
+            OrderRequest orderRequest, Long userId, double totalAmount) {
         Transaction transaction = new Transaction();
         transaction.setUid(userId);
         transaction.setAmount(totalAmount);

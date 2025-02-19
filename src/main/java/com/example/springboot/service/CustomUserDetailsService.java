@@ -2,7 +2,6 @@ package com.example.springboot.service;
 
 import com.example.springboot.feature_users.dao.UsersDao;
 import com.example.springboot.feature_users.entity.Users;
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UsersDao usersDao;
 
     @Autowired
-    public CustomUserDetailsService(UsersDao usersDao) { this.usersDao = usersDao; }
+    public CustomUserDetailsService(UsersDao usersDao) {
+        this.usersDao = usersDao;
+    }
 
     /**
      * loads user by username
@@ -31,8 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("Searching for username: " + username);
 
-        Optional<Users> userOptional =
-                Optional.ofNullable(usersDao.findByUsername(username));
+        Optional<Users> userOptional = Optional.ofNullable(usersDao.findByUsername(username));
 
         if (userOptional.isEmpty()) {
             throw new UsernameNotFoundException("User not found");

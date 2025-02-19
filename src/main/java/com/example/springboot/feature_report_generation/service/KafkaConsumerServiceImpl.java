@@ -1,30 +1,32 @@
 package com.example.springboot.feature_report_generation.service;
 
+import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
+import static com.example.springboot.feature_report_generation.constants.ReportConstants.INVALID_REPORT_TYPE;
+
 import com.example.springboot.feature_record_transactions.daos.TransactionDao;
 import com.example.springboot.feature_record_transactions.entity.Transaction;
 import com.example.springboot.feature_report_generation.dao.ReportDao;
 import com.example.springboot.feature_report_generation.entity.Report;
 import com.example.springboot.feature_report_generation.helper.CreateReportHelper;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.example.springboot.feature_report_generation.constants.ReportConstants.*;
-import static com.example.springboot.feature_report_generation.constants.ReportConstants.INVALID_REPORT_TYPE;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
 
 @Service
-public class KafkaConsumerServiceImpl implements KafkaConsumerService{
+public class KafkaConsumerServiceImpl implements KafkaConsumerService {
 
     private final TransactionDao transactionDao;
     private final ReportDao reportDao;
     private final CreateReportHelper createReportHelper;
 
-    public KafkaConsumerServiceImpl(TransactionDao transactionDao, ReportDao reportDao, CreateReportHelper createReportHelper) {
+    public KafkaConsumerServiceImpl(
+            TransactionDao transactionDao,
+            ReportDao reportDao,
+            CreateReportHelper createReportHelper) {
         this.transactionDao = transactionDao;
         this.reportDao = reportDao;
         this.createReportHelper = createReportHelper;

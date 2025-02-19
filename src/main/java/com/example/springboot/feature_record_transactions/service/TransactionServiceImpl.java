@@ -1,13 +1,12 @@
 package com.example.springboot.feature_record_transactions.service;
 
-import com.example.springboot.feature_record_transactions.daos.TransactionDao;
+import static com.example.springboot.feature_record_transactions.constants.TransactionConstants.*;
+
 import com.example.springboot.dto.ApiResponse;
+import com.example.springboot.feature_record_transactions.daos.TransactionDao;
 import com.example.springboot.feature_record_transactions.entity.Transaction;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import static com.example.springboot.feature_record_transactions.constants.TransactionConstants.*;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -38,7 +37,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public ApiResponse getAllTransactions() {
         List<Transaction> transactions = transactionDao.findAll();
-        return new ApiResponse(
-                true, null, TRANSACTION_RETRIEVED_SUCCESSFULLY, null, transactions);
+        return new ApiResponse(true, null, TRANSACTION_RETRIEVED_SUCCESSFULLY, null, transactions);
     }
 }
