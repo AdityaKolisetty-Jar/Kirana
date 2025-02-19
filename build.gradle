@@ -13,7 +13,7 @@ sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
-	maven { url 'https://jitpack.io' }  // Required for Bucket4j
+	maven { url 'https://jitpack.io' }
 }
 
 spotless {
@@ -54,6 +54,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	implementation 'com.bucket4j:bucket4j-redis:8.9.0'
+
+	implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
+
 }
 
 test {

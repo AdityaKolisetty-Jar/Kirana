@@ -13,9 +13,11 @@ import static com.example.springboot.feature_record_transactions.constants.Curre
 public class CurrencyConversionDao {
     private static final String API_URL = "https://api.fxratesapi.com/latest";
     private final StringRedisTemplate redisTemplate;
+    private final RestTemplate restTemplate;
 
-    public CurrencyConversionDao(StringRedisTemplate redisTemplate) {
+    public CurrencyConversionDao(StringRedisTemplate redisTemplate, RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
+        this.restTemplate = restTemplate;
     }
 
     /**
@@ -40,7 +42,6 @@ public class CurrencyConversionDao {
                             .queryParam(BASE, srcCurrency)
                             .toUriString();
 
-            RestTemplate restTemplate = new RestTemplate();
             Map<String, Object> response = restTemplate.getForObject(url, Map.class);
 
             if (response != null && response.containsKey(RATES)) {

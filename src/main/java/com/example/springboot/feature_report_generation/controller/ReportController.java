@@ -1,7 +1,7 @@
 package com.example.springboot.feature_report_generation.controller;
 
 import com.example.springboot.dto.ApiResponse;
-import com.example.springboot.feature_report_generation.service.ReportService;
+import com.example.springboot.feature_report_generation.service.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import static com.example.springboot.feature_report_generation.constants.ReportC
 @RequestMapping("/report")
 public class ReportController {
 
-    private final ReportService reportService;
+    private final KafkaProducerService reportService;
 
     @Autowired
-    public ReportController(ReportService reportService) {
+    public ReportController(KafkaProducerService reportService) {
         this.reportService = reportService;
     }
 

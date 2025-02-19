@@ -1,8 +1,8 @@
 package com.example.springboot.service;
 
-import com.example.springboot.daos.UsersDao;
-import com.example.springboot.entity.Users;
-import com.example.springboot.repository.UsersRepository;
+import com.example.springboot.feature_users.dao.UsersDao;
+import com.example.springboot.feature_users.entity.Users;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

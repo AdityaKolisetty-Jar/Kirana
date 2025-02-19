@@ -10,16 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiResponse {
-    private boolean success;
+    private boolean success = true;
     private String errorCode;
     private String displayMsg;
     private Object errorResponse;
     private Object data;
-
-    // Custom Constructor for Success Response
-    public ApiResponse(boolean success, String displayMsg, Object data) {
-        this.success = success;
-        this.displayMsg = displayMsg;
-        this.data = data;
-    }
 }

@@ -3,7 +3,7 @@ package com.example.springboot.feature_report_generation.constants;
 public class ReportConstants {
     public static final String REPORT_GENERATION_REQUEST_FOR = "Report generation requested for ";
     public static final String SUCCESS = "Success";
-    public static final String REPORT_TOPIC = "report-topic";
+    public static final String REPORT_TOPIC = "report-generation";
     public static final String REPORT_GROUP = "report-group";
     public static final String WEEK_LOW = "weekly";
     public static final String MONTH_LOW = "monthly";
