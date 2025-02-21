@@ -20,4 +20,5 @@ public class OrderConstants {
     public static final String INTERNAL_ERROR = "INTERNAL_ERROR";
     public static final String ERROR_WHILE_PROCESSING_ERROR =
             "An error occurred while processing the order";
+    public static final String ORDER_RETRIEVED_SUCCESSFULLY = "ORDER_RETRIEVED_SUCCESSFULLY";
 }

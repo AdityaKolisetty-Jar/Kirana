@@ -1,7 +1,7 @@
 package com.example.springboot.feature_record_transactions.daos;
 
-import com.example.springboot.feature_record_transactions.entity.Transaction;
-import com.example.springboot.feature_record_transactions.repository.TransactionRepository;
+import com.example.springboot.feature_record_transactions.entities.Transaction;
+import com.example.springboot.feature_record_transactions.repositories.TransactionRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,13 @@ public class TransactionDao {
         return transactionRepository.findAll();
     }
 
+    /**
+     * returns list of transactions between the given dates and times
+     *
+     * @param startOfWeek
+     * @param endOfWeek
+     * @return
+     */
     public List<Transaction> findByCreatedAtBetween(
             LocalDateTime startOfWeek, LocalDateTime endOfWeek) {
         return transactionRepository.findByCreatedAtBetween(startOfWeek, endOfWeek);

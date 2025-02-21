@@ -4,6 +4,7 @@ import static com.example.springboot.feature_record_transactions.constants.Curre
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,7 @@ public class CurrencyConversionDao {
     private final StringRedisTemplate redisTemplate;
     private final RestTemplate restTemplate;
 
+    @Autowired
     public CurrencyConversionDao(StringRedisTemplate redisTemplate, RestTemplate restTemplate) {
         this.redisTemplate = redisTemplate;
         this.restTemplate = restTemplate;

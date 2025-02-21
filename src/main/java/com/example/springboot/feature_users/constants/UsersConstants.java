@@ -8,4 +8,5 @@ public class UsersConstants {
     public static final String AN_UNEXPECTED_ERROR_OCCURRED = "An unexpected error occurred";
     public static final String REGISTRATION_SUCCESSFUL = "Registration Successful";
     public static final String LOGIN_SUCCESSFUL = "Login Successful";
+    public static final String USER_NOT_FOUND = "User not found";
 }
